@@ -1,37 +1,30 @@
-## Welcome to GitHub Pages
+SDLC Component | Tool         | Hosting
+-------------- | -------------|--------
+Source Control | Git | GitHub
+Front End | Angular | Azure Static Website on a Storage Account
+Back End | .NET Core | Azure Function App
+CICD Pipeline | AzureDevOps | Azure
 
-You can use the [editor on GitHub](https://github.com/garrett-waage/azure-cheap-fullstack-app/edit/gh-pages/index.md) to maintain and preview the content for your website in Markdown files.
+## Setting up AzureDevOps 
+The one stop shop for a dev shop!
 
-Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
+Navigate to https://dev.azure.com and follow the prompts. 
+* Choose **Free With Github** to re-use your GitHub credentials.
+* Choose **Free** to use your MSDN account or to create a new one. 
+* If you already have an account and have multiple organizations, choose an organization. 
 
-### Markdown
+Voila, you have an AzureDevOps instance in the cloud! This provides you with:
+* A place to host repos, in case you didn't want to use GitHub.
+* Automated Builds & Releases for deploying your code.
+    * AzureDevOps has many different tasks and build agent operating systems to build and deploy many types of applications, to many types of hosting environments.
+* Agile tooling to organize yourself and teams.
+* Testplans to organize and automate testing.
+* The ability to share the instance with collaborators. 
+* and Dashboards to visualize it all!
 
-Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
+Allotted Parallel Jobs | Allotted CPU time | Cost
+-----------------------|-------------------|-----
+1 | 30 hours/month | Free
+x | unlimited | x * $40/month
 
-```markdown
-Syntax highlighted code block
-
-# Header 1
-## Header 2
-### Header 3
-
-- Bulleted
-- List
-
-1. Numbered
-2. List
-
-**Bold** and _Italic_ and `Code` text
-
-[Link](url) and ![Image](src)
-```
-
-For more details see [GitHub Flavored Markdown](https://guides.github.com/features/mastering-markdown/).
-
-### Jekyll Themes
-
-Your Pages site will use the layout and styles from the Jekyll theme you have selected in your [repository settings](https://github.com/garrett-waage/azure-cheap-fullstack-app/settings). The name of this theme is saved in the Jekyll `_config.yml` configuration file.
-
-### Support or Contact
-
-Having trouble with Pages? Check out our [documentation](https://docs.github.com/categories/github-pages-basics/) or [contact support](https://github.com/contact) and we’ll help you sort it out.
+30 hours/month of build & release CPU time is PLENTY for an individual or small teams. 
