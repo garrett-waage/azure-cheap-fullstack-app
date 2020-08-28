@@ -10,7 +10,7 @@ CICD Pipeline | AzureDevOps | Azure
 Persistence Layer | NoSQL | Azure Storage Account Tables API
 
 ## Setting up AzureDevOps 
-The one stop shop for a dev shop!
+The one stop dev shop!
 
 Navigate to https://dev.azure.com and follow the prompts. 
 * Choose **Free With Github** to re-use your GitHub credentials.
@@ -86,5 +86,60 @@ Now changes to your angular app will automatically build in AzureDevOps, and sto
         
 
 ## Access the Azure Portal 
+1. Navigate to https://portal.azure.com
+1. If necessary, start an Azure Free Trial - $200 for a year goes a LONG way!
+    * You DO have to provide a credit card, but there is 0 risk of getting charged. If you run out of credits or after a year, your resource will simply be shut off unless you change your payment plan. 
+1. You should be logged in and and at the home page.
+
 ## Create a Storage Account
+
+The Storage Account is an Azure product ("resource") that includes several great features.
+* A simple file system.
+    * This is where the static Angular files will live.
+    * The files for the Serverless Azure Functions are stored here too.
+* Tables API - A NoSQL database.
+    * This is the cheapest persistence layer provided by Azure. 
+* Simple Queuing functionality.
+    * Azure also provides a more advanced Service Bus product.
+
+1. In the Azure Portal, search for `Storage Account`
+1. Add 
+1. Create a new **Resource Group**
+    * Typically this is the grouping of all the components of one overall application, for one environment. 
+    * Example: skeletonapp-dev
+    * If you just activated a free trial and get an insufficient permissions error, re-log and try again!
+1. **Name** your storage account
+    * This name becomes part of the URL used to access your storage account. We will create an Azure Function to serve the Angular App, though, so clients won't see this url. 
+    * Example: stskeletonappdev
+        * `st` is just Microsoft's recommended prefix. /shrug. 
+1. Specify the **Location**
+    * This location should be consistent accross all the resources you make. 
+    * This hosts your application in the specified region - the further away a client is, the higher latency there will be. For our purposes this is negligible.
+1. All other fields can be left as defaults. 
+    * You can specify a **Cool** access tier to save more money, but even with **Hot**, it's CHEAP! 
+1. **Review + Create**
+    * You can tab through the different pages instead of Review + Create if desired, but the defaults work perfectly fine.
+1. Hopefully your validation passes.
+1. **Create** your Storage Account!
+    * And your resource group..
+   
+After a few seconds, you have a Storage Account!
+
+## Set up your Storage Account to host your Angular code
+By default, the Storage Account will require authentication for accessing the various files or features within. By using the **Static Website** feature of the Storage Account, we can serve the static files without requiring authentication. 
+
+1. Navigate to your Storage Accounnt
+1. Navigate to the **Static Website** option on the left pane.
+1. Toggle the Static website to **Enabled**
+1. Set the **Index document name** to **index.html** 
+    * This is what Angular Typically compiles down to - an index file, a css file, and a bunch of javascript files.
+1. Set the **Error document path** to **404.html**
+    * You actually don't need to have this file, but it doesn't hurt.
+1. **Save**
+1. You should now have the **$web** container, and an endpoint for that container. 
+    * You can Navigate to the **$web** container and upload files through the Azure Portal UI and access those files through the endpoint.
+    * We'll store the Angular files in this container.
+    
+Now we have the infrastructure created to host and serve your Angular code!
+
 ## Create the release
